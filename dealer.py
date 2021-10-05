@@ -8,6 +8,7 @@ import random
 
 class dealer:
     def __init__(self, num_decks = 8):
+        # Initialize deck and dealer specific variables
         self.deck = [1,2,3,4,5,6,7,8,9,10,10,10,10]*(4*num_decks)
         self.c1 = 0
         self.c2 = 0
@@ -19,6 +20,8 @@ class dealer:
         self.num_decks = num_decks
         
     def action(self):
+        # Dealer has simple rules that it follows which are slightly different 
+        # when there is a soft 17
         ace = 0
         if self.c1 == 1 and self.c2 != 1 or  self.c1 != 1 and self.c2 == 1:
             ace = 1
@@ -41,19 +44,19 @@ class dealer:
                 ace -= 1
                 self.sum_cards -= 10
     
-    def deal_cards(self,):
-        pass
-    
     def randomize(self):
+        # returns a shuffled deck
         random.shuffle(self.deck)
         
     def init_deck(self):
+        # shuffle a new deck
         self.deck = [1,2,3,4,5,6,7,8,9,10,10,10,10]*(4*self.num_decks)
         self.randomize()
         self.reset_deck = False
         
     def deal_card(self):
-        
+        # reset_deck is set to true if most of the deck has been used up
+        # return the last card on deck (pop it out)
         if len(self.deck)-1 < 0.875*(4*self.num_decks):
             self.reset_deck = True
         return self.deck.pop()

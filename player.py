@@ -7,6 +7,30 @@ Created on Mon Oct  4 11:17:17 2021
 
 
 class player:
+    # standard rules key (dealer face-up card): value (player hand total 4:21)
+    rule_std = {2: ['H','H','H','H','H','H','D','D','H','S','S','S','S','S','S','S','S','S'],
+                3: ['H','H','H','H','H','D','D','D','H','S','S','S','S','S','S','S','S','S'],
+                4: ['H','H','H','H','H','D','D','D','S','S','S','S','S','S','S','S','S','S'],
+                5: ['H','H','H','H','H','D','D','D','S','S','S','S','S','S','S','S','S','S'],
+                6: ['H','H','H','H','H','D','D','D','S','S','S','S','S','S','S','S','S','S'],
+                7: ['H','H','H','H','H','H','D','D','H','H','H','H','H','S','S','S','S','S'],
+                8: ['H','H','H','H','H','H','D','D','H','H','H','H','H','S','S','S','S','S'],
+                9: ['H','H','H','H','H','H','D','D','H','H','H','H','H','S','S','S','S','S'],
+                10:['H','H','H','H','H','H','H','D','H','H','H','H','H','S','S','S','S','S'],
+                1: ['H','H','H','H','H','H','H','H','H','H','H','H','H','S','S','S','S','S']}
+    
+    # standard rules key (dealer face-up card): value (player hand total 12:21)
+    rule_sft = {2: ['H','H','H','H','H','H','S','S','S','S'],
+                3: ['H','H','H','H','H','D','D','S','S','S'],
+                4: ['H','H','H','D','D','D','D','S','S','S'],
+                5: ['D','D','D','D','D','D','D','S','S','S'],
+                6: ['D','D','D','D','D','D','D','S','S','S'],
+                7: ['H','H','H','H','H','H','S','S','S','S'],
+                8: ['H','H','H','H','H','H','S','S','S','S'],
+                9: ['H','H','H','H','H','H','H','S','S','S'],
+                10:['H','H','H','H','H','H','H','S','S','S'],
+                1: ['H','H','H','H','H','H','H','S','S','S']}
+    
     def __init__(self, starting_fund, min_bet = 25):
         self.funds = starting_fund
         self.c1 = 0
@@ -42,24 +66,16 @@ class player:
                 ace -= 1
                 self.sum_cards -= 10
                     
-    def double(self, ace, dealer_c1):
-        if ace == 0:
-            if self.sum_cards == 11:
-                return True
-            elif self.sum_cards == 10 and dealer_c1 < 10 and dealer_c1 > 1:
-                return True
-            elif 
-        else:
-            pass
+    
     def continue_drawing(self, ace, cards, dealer_c1):
         
-        if cards == 2 and self.double(ace, dealer_c1):
-            self.amt_bet += self.amt_bet
-            next_c = self.deal_card()
-            self.sum_cards += next_c
-            if next_c == 1 and self.sum_cards + 10 <= 21:
-                self.sum_cards += 10
-            
-            return False
+#        if cards == 2 and self.double(ace, dealer_c1):
+#            self.amt_bet += self.amt_bet
+#            next_c = self.deal_card()
+#            self.sum_cards += next_c
+#            if next_c == 1 and self.sum_cards + 10 <= 21:
+#                self.sum_cards += 10
+#            
+#            return False
         
         return False
