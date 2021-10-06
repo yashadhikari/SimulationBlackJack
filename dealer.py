@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Oct  4 11:30:36 2021
-
 @author: yadhikari
 """
 import random
@@ -16,6 +15,7 @@ class dealer:
         self.reset_deck = False
         self.randomize()
         self.sum_cards = 0
+        self.cards = 2
         
         self.num_decks = num_decks
         
@@ -23,6 +23,7 @@ class dealer:
         # Dealer has simple rules that it follows which are slightly different 
         # when there is a soft 17
         ace = 0
+        self.cards = 2
         if self.c1 == 1 and self.c2 != 1 or  self.c1 != 1 and self.c2 == 1:
             ace = 1
             self.sum_cards = self.c1 + self.c2 + 10
@@ -36,6 +37,7 @@ class dealer:
             
             next_c = self.deal_card()
             self.sum_cards += next_c
+            self.cards += 1
             if next_c == 1:
                 ace += 1
                 self.sum_cards += 10
