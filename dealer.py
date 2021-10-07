@@ -4,6 +4,8 @@ Created on Mon Oct  4 11:30:36 2021
 @author: yadhikari
 """
 import random
+import numpy as np
+
 
 class dealer:
     def __init__(self, num_decks = 8):
@@ -48,7 +50,7 @@ class dealer:
     
     def randomize(self):
         # returns a shuffled deck
-        random.shuffle(self.deck)
+        np.random.shuffle(self.deck)
         
     def init_deck(self):
         # shuffle a new deck
@@ -59,6 +61,6 @@ class dealer:
     def deal_card(self):
         # reset_deck is set to true if most of the deck has been used up
         # return the last card on deck (pop it out)
-        if len(self.deck)-1 < 0.875*(4*self.num_decks):
+        if len(self.deck)-1 < 0.125*(52*self.num_decks):
             self.reset_deck = True
         return self.deck.pop()
